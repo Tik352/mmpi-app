@@ -15,11 +15,20 @@ const ScaleDescribtion = require("./modules/ScaleDescribtion.js");
 
 // Middlewares:
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.set('port', (process.env.PORT || 3000));
 
 // подключение к бд
-const url = "mongodb://localhost:27017/MMPIdatabase";
-mongoose.connect(url);
+//const url = "mongodb://localhost:27017/MMPIdatabase";
+const url = "mongodb://admin:admin12@ds125680.mlab.com:25680/heroku_gs3xp4w0";
+mongoose.connect(process.env.MONGODB_URI || url ,
+    (err) =>
+    {
+        if (err)
+            console.log(err);
+
+        console.log(`connected`);
+
+    });
 
 app.get("/", function (req, res) {
     res.send("Everything is OK");
@@ -209,7 +218,7 @@ app.get("/api/scalesDescribtion/:scaleName", function (req, res) {
 });
 
 
-app.listen(3000, function (err) {
+app.listen(app.get('port'), function (err) {
     if (!err) return console.log("Server waiting for connection");
 });
 
