@@ -1,0 +1,16 @@
+{
+  "name": "MMPIserver",
+  "version": "1.0.0",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongodb": "^3.0.7",
+    "mongoose": "^5.0.17",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  }
+}
