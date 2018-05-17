@@ -35,19 +35,20 @@ app.get("/", function (req, res) {
 });
 
 // получение вопросов из бд
-app.get("/api/questions/:sex",
+app.get("/api/questions/:sex/:number",
     function (req, res) {
 
         let sex = req.params["sex"];
+        let number = req.params["number"];
 
         if (sex === "M")
-            Question.find({sex: "M"}, function (err, docs) {
+            Question.find({sex: "M", number: number}, function (err, docs) {
                 if (err) return console.log(err);
 
                 res.send(docs);
             });
         else
-            Question.find({sex: "W"}, function (err, docs) {
+            Question.find({sex: "W", number: number}, function (err, docs) {
                 if (err) return console.log(err);
 
                 res.send(docs);
