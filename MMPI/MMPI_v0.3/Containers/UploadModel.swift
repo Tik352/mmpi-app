@@ -70,7 +70,7 @@ class UploadModel: NSObject, URLSessionDelegate {
     // Функция, регистрирующая нового специалиста
     func uploadSpecialistWithId(login: String, password: String) {
 //        let requestUrl = URL(string: "http://localhost:3000/api/register/specialist")!
-        let requestUrl = URL(string: "https:///mmpi-server.herokuapp.com/api/register/specialist")!
+        let requestUrl = URL(string: "https://mmpi-server.herokuapp.com/api/register/specialist")!
 
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
@@ -123,7 +123,7 @@ class UploadModel: NSObject, URLSessionDelegate {
     
     func uploadResult(resultId: String, scales: [Scale], missedQuestionsCount: Int) {
 //        let requestUrl = URL(string: "http://localhost:3000/api/result")!
-        let requestUrl = URL(string: "https:///mmpi-server.herokuapp.com/api/result")!
+        let requestUrl = URL(string: "https://mmpi-server.herokuapp.com/api/result")!
 
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "PUT"
