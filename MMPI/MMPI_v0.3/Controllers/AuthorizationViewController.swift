@@ -19,7 +19,7 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
     var downloadModel = DownloadModel()
     
     @IBAction func enterButtonTouchDown(_ sender: Any) {
-        // НЕДОРАБОТАННАЯ функция, осуществляющая проверку введенных данных (на непустоту + обращение к базе данных)
+        enterButton.isEnabled = false
         func loginInformationCheck(id: String, password: String) -> Bool{
             if (id == "") || (password == "") {
                 warningLabel.text = "Не вся необходимая информация введена пользователем"
@@ -38,6 +38,7 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
     }
     
     func itemsDownloaded(items: NSArray) {
+        enterButton.isEnabled = true
         if (items[0] as? String != "") {
             specialistId = items[0] as! String
             performSegue(withIdentifier: "authorizationSegue", sender: self)

@@ -39,10 +39,12 @@ class SpecialistRegistrationViewController: UIViewController, UploadModelProtoco
     }
     
     @IBAction func doneButtonTouched(_ sender: Any) {
+        doneButton.isEnabled = false
         uploadModel.uploadSpecialistWithId(login: loginTextField.text!, password: passwordTextField.text!)
     }
     
     func itemsUploaded(items: NSArray) {
+        doneButton.isEnabled = true
         if let errorCode = items[0] as? Int {
             if errorCode == 11000 {
                 warningLabel.text = "This login is already used"

@@ -59,6 +59,8 @@ class TheEndOfTheTestingViewController: UIViewController, DownloadModelProtocol,
     }
     
     func itemsUploaded(items: NSArray) {
+        nextButton.isEnabled = true
+        returnToMenuButton.isEnabled = true
         print("yo")
         if (items[0] as? Int != nil) {
 //            let result = Result(user: User(name: name, sex: sex, dateOfBirth: dateOfBirth, specialistId: specialistId), convertedTScales: countedScales, missedQuestionsCount: missedQuestionsCount(), dateOfTesting: gettingCurrentDate(), id: resultId)
@@ -72,11 +74,13 @@ class TheEndOfTheTestingViewController: UIViewController, DownloadModelProtocol,
     }
 
     @IBAction func nextButtonTouched(_ sender: Any) {
+        nextButton.isEnabled = false
         uploadModel.uploadResult(resultId: resultId, scales: countedScales, missedQuestionsCount: missedQuestionsCount())
     }
     
     
     @IBAction func returnToMenuButtonTouched(_ sender: Any) {
+        returnToMenuButton.isEnabled = false
         route = "toMenu"
         uploadModel.uploadResult(resultId: resultId, scales: countedScales, missedQuestionsCount: missedQuestionsCount())
     }

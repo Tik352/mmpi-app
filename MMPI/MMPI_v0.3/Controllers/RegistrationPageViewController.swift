@@ -47,6 +47,7 @@ class RegistrationPageViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     func itemsUploaded(items: NSArray) {
+        registrationDoneItemButton.isEnabled = false
         if items[0] as! String != "" {
             registeredUserId = items[0] as! String
             performSegue(withIdentifier: "registrationSegue", sender: self)
@@ -153,7 +154,7 @@ class RegistrationPageViewController: UIViewController, UIPickerViewDataSource, 
         }
         
         let condition = registrationInfoCheck(name: nameTextField.text!, dateOfBirth: dateTextField.text!, sex: sexTextField.text!)
-        
+        registrationDoneItemButton.isEnabled = false
         if (condition == true) {
             uploadModel.uploadUser(name: nameTextField.text!, dateOfBirth: dateTextField.text!, sex: sexTextField.text!, specialistId: idTextField.text!)
         }
