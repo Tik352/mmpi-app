@@ -132,10 +132,12 @@ class UploadModel: NSObject, URLSessionDelegate {
         var postParams: NSString = "id=\(resultId)&dateOfTesting=\(gettingCurrentDate())&missedQuestionsCount=\(missedQuestionsCount)" as NSString
         var nameOfScalesParams = "&scales="
         var valuesOfScalesParams = "&tValues="
-        for i in 0...scales.count - 2 {
-            nameOfScalesParams += "\(scales[i].name!)%"
-            valuesOfScalesParams += "\(scales[i].TScore!)%"
-        }; nameOfScalesParams += "\(scales[scales.count - 1].name!)"; valuesOfScalesParams += "\(scales[scales.count - 1].TScore!)"
+        if (scales.count > 0) {
+            for i in 0...scales.count - 2 {
+                nameOfScalesParams += "\(scales[i].name!)%"
+                valuesOfScalesParams += "\(scales[i].TScore!)%"
+            }; nameOfScalesParams += "\(scales[scales.count - 1].name!)"; valuesOfScalesParams += "\(scales[scales.count - 1].TScore!)"
+        }
         postParams = (postParams as String) + nameOfScalesParams + valuesOfScalesParams as NSString
         print(postParams)
         let escapeAdress = postParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)

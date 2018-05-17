@@ -99,7 +99,7 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     //Функция, реализующая переход к следующему вопросу теста
     func nextQuestion() {
         if (currentQuestion.number! < 566) {
-            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/W/\(currentQuestion.number! + 1)", mode: "q")
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/\(currentQuestion.number! + 1)", mode: "q")
 //            progressLabel.text = "Вопрос \(currentQuestion.number!)/\(questionItems.count)"
 //            currentQuestionLabel.text = currentQuestion.questionText
         }
