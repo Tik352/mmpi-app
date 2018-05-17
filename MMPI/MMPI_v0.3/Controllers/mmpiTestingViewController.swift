@@ -23,11 +23,13 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     var specialistId: String = String()
     var sex: String = String()
     var resultId: String = String()
-    var questionItems: NSArray = NSArray()
-    var currentQuestion = QuestionsModel()
+//    var questionItems: NSArray = NSArray()
+    var currentQuestion: QuestionsModel = QuestionsModel()
+//    var currentQuestion = QuestionsModel()
     var answers: Array = Array(repeating: 0, count: 566)
     var itemsDownloaded = false
-    
+    var sexL: String = String()
+    let downloadModel = DownloadModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,29 +37,37 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
         progressLabel.text = "Вопрос 1/566"
         
         // инициализация объекта класса DownloadModel
-        let downloadModel = DownloadModel()
+//        let downloadModel = DownloadModel()
         downloadModel.delegate = self
         if (sex == "Мужской") {
 //            downloadModel.downloadItems(url: "http://mmpitest.tech/Questions_men.php", mode: "q" ) PHP+SQL ----> MONGO+NODE.js
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/questions/M", mode: "q")
-            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/M", mode: "q")
+            sexL = "M"
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/M/1", mode: "q")
 
         }
         else {
 //            downloadModel.downloadItems(url: "http://mmpitest.tech/Questions_women.php", mode: "q") PHP+SQL ----> MONGO+NODE.JS
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/questions/W", mode: "q")
-            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/W", mode: "q")
+            sexL = "W"
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/W/1", mode: "q")
 
         }
     }
     
     // Загрузка вопросов и инициализация переменных
     func itemsDownloaded(items: NSArray) {
-        questionItems = items
-        currentQuestion = questionItems[555] as! QuestionsModel
-        progressLabel.text = "Вопрос \(currentQuestion.number!)/\(questionItems.count)"
-        currentQuestionLabel.text = currentQuestion.questionText
-        itemsDownloaded = true
+//        questionItems = items
+//        currentQuestion = questionItems[555] as! QuestionsModel
+//        progressLabel.text = "Вопрос \(currentQuestion.number!)/\(questionItems.count)"
+//        currentQuestionLabel.text = currentQuestion.questionText
+//        itemsDownloaded = true
+        var currentQuestion: QuestionsModel = QuestionsModel()
+        if (items.count > 0) {
+            currentQuestion = items[0] as! QuestionsModel
+            progressLabel.text = "Вопрос \(currentQuestion.number!)/566"
+        }
+        
     }
     
     //MARK: -  Обработка нажатий пользователя на кнопки выбора ответа
@@ -85,10 +95,10 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     
     //Функция, реализующая переход к следующему вопросу теста
     func nextQuestion() {
-        if (currentQuestion.number! < questionItems.count) {
-            currentQuestion = questionItems[currentQuestion.number!] as! QuestionsModel
-            progressLabel.text = "Вопрос \(currentQuestion.number!)/\(questionItems.count)"
-            currentQuestionLabel.text = currentQuestion.questionText
+        if (currentQuestion.number! < 566) {
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/W/\(currentQuestion.number! + 1)", mode: "q")
+//            progressLabel.text = "Вопрос \(currentQuestion.number!)/\(questionItems.count)"
+//            currentQuestionLabel.text = currentQuestion.questionText
         }
         else {
             performSegue(withIdentifier: "testToEndSegue", sender: self)

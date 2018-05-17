@@ -35,7 +35,7 @@ app.get("/", function (req, res) {
 });
 
 // получение вопросов из бд
-app.get("/api/questions/:sex/:number",
+app.get("/api/questions/:sex:number",
     function (req, res) {
 
         let sex = req.params["sex"];
