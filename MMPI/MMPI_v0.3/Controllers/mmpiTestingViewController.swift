@@ -30,6 +30,7 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     var itemsDownloaded = false
     var sexL: String = String()
     let downloadModel = DownloadModel()
+//    var currentQuestionNumber = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +44,14 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
 //            downloadModel.downloadItems(url: "http://mmpitest.tech/Questions_men.php", mode: "q" ) PHP+SQL ----> MONGO+NODE.js
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/questions/M", mode: "q")
             sexL = "M"
-            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/M/1", mode: "q")
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/555", mode: "q")
 
         }
         else {
 //            downloadModel.downloadItems(url: "http://mmpitest.tech/Questions_women.php", mode: "q") PHP+SQL ----> MONGO+NODE.JS
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/questions/W", mode: "q")
             sexL = "W"
-            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/W/1", mode: "q")
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/555", mode: "q")
 
         }
     }
@@ -62,10 +63,12 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
 //        progressLabel.text = "Вопрос \(currentQuestion.number!)/\(questionItems.count)"
 //        currentQuestionLabel.text = currentQuestion.questionText
 //        itemsDownloaded = true
-        var currentQuestion: QuestionsModel = QuestionsModel()
+//        var currentQuestion: QuestionsModel = QuestionsModel()
         if (items.count > 0) {
             currentQuestion = items[0] as! QuestionsModel
             progressLabel.text = "Вопрос \(currentQuestion.number!)/566"
+            currentQuestionLabel.text = currentQuestion.questionText!
+            itemsDownloaded = true
         }
         
     }

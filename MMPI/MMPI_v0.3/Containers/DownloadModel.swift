@@ -207,22 +207,22 @@ class DownloadModel: NSObject, URLSessionDataDelegate {
     
     // Функция, реализующая парсинг полученной информации в формате JSON
     func parseJSONQuestions(data: Data) {
-        var jsonResult = NSArray()
+        var jsonResult = NSDictionary()
         
         do {
-            jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSArray
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
         }
         catch let error as NSError {
             print("error -> \(error.localizedDescription)")
         }
-        var jsonElement = NSDictionary()
+//         jsonElement = NSDictionary()
         let questions = NSMutableArray()
-        for i in 0..<jsonResult.count {
-            jsonElement = jsonResult[i] as! NSDictionary
+//        for i in 0..<jsonResult.count {
+//            jsonElement = jsonResult as! NSDictionary
             let question = QuestionsModel()
             
-            if let number = jsonElement["number"] as? Int,
-                let questionText = jsonElement["text"] as? String
+            if let number = jsonResult["number"] as? String,
+                let questionText = jsonResult["text"] as? String
             {
                 question.number = Int(number)
                 question.questionText = questionText
@@ -231,7 +231,7 @@ class DownloadModel: NSObject, URLSessionDataDelegate {
                 
             }
             questions.add(question)
-        }
+//        }
         DispatchQueue.main.async(execute: { () -> Void in
             self.delegate.itemsDownloaded(items: questions)
         })
