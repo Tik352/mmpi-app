@@ -35,24 +35,29 @@ app.get("/", function (req, res) {
 });
 
 // получение вопросов из бд
-app.get("/api/questions/:sex:number",
+app.get("/api/questions/:sex/:number",
     function (req, res) {
 
-        let sex = req.params["sex"];
-        let number = req.params["number"];
+        let sex = req.params["sex"].toString();
+        let number = req.params["number"].toString();
+        // console.log(sex  + number);
 
-        if (sex === "M")
-            Question.find({sex: "M", number: number}, function (err, docs) {
-                if (err) return console.log(err);
-
-                res.send(docs);
-            });
-        else
-            Question.find({sex: "W", number: number}, function (err, docs) {
-                if (err) return console.log(err);
-
-                res.send(docs);
-            });
+        // if (sex === "M")
+        //     Question.find({sex: "M", number: number.toString()}, function (err, docs) {
+        //         if (err) return console.log(err);
+        //
+        //         res.send(docs);
+        //     });
+        // else
+        //     Question.find({sex: "W", number: number}, function (err, docs) {
+        //         if (err) return console.log(err);
+        //
+        //         res.send(docs);
+        //     });
+        Question.findOne({number: number, sex: sex}, function (err, question) {
+            if(err) return res.send(err);
+            res.send(question);
+        });
     });
 
 // Получение данных о подсчитываемых шкалах

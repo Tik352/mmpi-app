@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const questionScheme = new mongoose.Schema({
-    number: Number,
+    number: String,
     text: String,
     sex: String
 });
