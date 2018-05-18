@@ -39,9 +39,11 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
     
     func itemsDownloaded(items: NSArray) {
         enterButton.isEnabled = true
-        if (items[0] as? String != "") {
+        if (items.count > 0) {
             specialistId = items[0] as! String
             performSegue(withIdentifier: "authorizationSegue", sender: self)
+        } else {
+            warningLabel.text = "Пользователь не найден"
         }
     }
     
@@ -58,6 +60,7 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
         let destination = segue.destination as! ResultTableViewController
         destination.specialistId = specialistId
         }
+        self.hideKeyboardWhenTappedAround()
     }
 
     /*

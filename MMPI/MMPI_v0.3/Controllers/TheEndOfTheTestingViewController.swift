@@ -53,9 +53,6 @@ class TheEndOfTheTestingViewController: UIViewController, DownloadModelProtocol,
         for i in 0...(countedScales.count - 1) {
             countedScales[i].convertToTScores()
         }
-        
-        
-//        uploadModel.uploadResult(resultId: resultId, scales: countedScales, missedQuestionsCount: missedQuestionsCount())
     }
     
     func itemsUploaded(items: NSArray) {

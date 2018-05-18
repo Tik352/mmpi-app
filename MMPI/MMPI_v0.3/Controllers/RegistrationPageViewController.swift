@@ -47,7 +47,7 @@ class RegistrationPageViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     func itemsUploaded(items: NSArray) {
-        registrationDoneItemButton.isEnabled = false
+        registrationDoneItemButton.isEnabled = true
         if items[0] as! String != "" {
             registeredUserId = items[0] as! String
             performSegue(withIdentifier: "registrationSegue", sender: self)

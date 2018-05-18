@@ -17,6 +17,7 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     @IBOutlet weak var falseAnswerButton: UIButton!
     @IBOutlet weak var idkAnswerButton: UIButton!
     @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var waringLabel: UILabel!
     
     var name: String = String()
     var dateOfBirth: String = String()
@@ -36,6 +37,7 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
         super.viewDidLoad()
         
         progressLabel.text = "Вопрос 1/566"
+        waringLabel.text = ""
         
         // инициализация объекта класса DownloadModel
 //        let downloadModel = DownloadModel()
@@ -44,38 +46,40 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
 //            downloadModel.downloadItems(url: "http://mmpitest.tech/Questions_men.php", mode: "q" ) PHP+SQL ----> MONGO+NODE.js
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/questions/M", mode: "q")
             sexL = "M"
-            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/555", mode: "q")
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/1", mode: "q")
 
         }
         else {
 //            downloadModel.downloadItems(url: "http://mmpitest.tech/Questions_women.php", mode: "q") PHP+SQL ----> MONGO+NODE.JS
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/questions/W", mode: "q")
             sexL = "W"
-            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/555", mode: "q")
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/1", mode: "q")
 
         }
     }
     
     // Загрузка вопросов и инициализация переменных
     func itemsDownloaded(items: NSArray) {
-//        questionItems = items
-//        currentQuestion = questionItems[555] as! QuestionsModel
-//        progressLabel.text = "Вопрос \(currentQuestion.number!)/\(questionItems.count)"
-//        currentQuestionLabel.text = currentQuestion.questionText
-//        itemsDownloaded = true
-//        var currentQuestion: QuestionsModel = QuestionsModel()
         if (items.count > 0) {
+            waringLabel.text = ""
             currentQuestion = items[0] as! QuestionsModel
             progressLabel.text = "Вопрос \(currentQuestion.number!)/566"
             currentQuestionLabel.text = currentQuestion.questionText!
             itemsDownloaded = true
+            trueAnswerButton.isEnabled = true
+            falseAnswerButton.isEnabled = true
+            idkAnswerButton.isEnabled = true
+        } else {
+            waringLabel.text = "Не удалось загрузить вопрос"
         }
-        
     }
     
     //MARK: -  Обработка нажатий пользователя на кнопки выбора ответа
     
     @IBAction func trueButtonTouched(_ sender: Any) {
+        trueAnswerButton.isEnabled = false
+        falseAnswerButton.isEnabled = false
+        idkAnswerButton.isEnabled = false
         if(itemsDownloaded == true) {
             answers[currentQuestion.number! - 1] = 1
             nextQuestion()
@@ -83,6 +87,9 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     }
     
     @IBAction func falseButtonTouched(_ sender: Any) {
+        trueAnswerButton.isEnabled = false
+        falseAnswerButton.isEnabled = false
+        idkAnswerButton.isEnabled = false
         if(itemsDownloaded == true) {
             answers[currentQuestion.number! - 1] = -1
             nextQuestion()
@@ -91,6 +98,9 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     }
     
     @IBAction func idkButtonTouched(_ sender: Any) {
+        trueAnswerButton.isEnabled = false
+        falseAnswerButton.isEnabled = false
+        idkAnswerButton.isEnabled = false
         if (itemsDownloaded == true) {
           nextQuestion()
         }

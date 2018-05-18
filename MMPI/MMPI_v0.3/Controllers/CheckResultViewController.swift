@@ -24,6 +24,7 @@ class CheckResultViewController: UIViewController, DownloadModelProtocol {
         warningLabel.text = ""
 
         downloadModel.delegate = self
+        self.hideKeyboardWhenTappedAround()
     }
     
     func itemsDownloaded(items: NSArray) {
@@ -43,7 +44,6 @@ class CheckResultViewController: UIViewController, DownloadModelProtocol {
         } else {
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/results/\(resultIdTextField.text!)", mode: "r")
             downloadModel.downloadItems(url: "https://lmmpi-server.herokuapp.com/api/results/\(resultIdTextField.text!)", mode: "r")
-
         }
     }
     

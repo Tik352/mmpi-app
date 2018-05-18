@@ -48,6 +48,9 @@ class ScaleDescribtionViewController: UIViewController, DownloadModelProtocol {
             }
             scaleDescribtionTextView.text = describtion
         }
+        else {
+            scaleDescribtionTextView.text = "Не удалось загрузить описание"
+        }
         
     }
 

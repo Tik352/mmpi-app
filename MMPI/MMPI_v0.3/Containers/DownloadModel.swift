@@ -177,8 +177,9 @@ class DownloadModel: NSObject, URLSessionDataDelegate {
                 }
             }
             result = Result(user: currentUser, convertedTScales: countedScales, missedQuestionsCount: missedQuestionsCount, dateOfTesting: dateOfTesting, id: id)
+            items.add(result)
+
         }
-        items.add(result)
         DispatchQueue.main.async {
             self.delegate.itemsDownloaded(items: items)
         }
