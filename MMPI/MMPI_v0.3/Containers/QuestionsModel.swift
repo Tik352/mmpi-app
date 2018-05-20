@@ -10,7 +10,6 @@ import Foundation
 
 // Класс, представляющий контейнер, для хранения информации о задаваемом вопросе
 class QuestionsModel: NSObject {
-    
     var number: Int?
     var questionText: String?
     
@@ -20,7 +19,6 @@ class QuestionsModel: NSObject {
         self.number = number
         self.questionText = questionText
     }
-    
     // Функция, возвращающая представление конкретного вопроса в формате [номер: текст]
     func itemDescription() -> String {
         return "\(number!): \(questionText!)"

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Класс, представляющий собой UIViewController, содержащий в себе интерфейс и логику, сопровождающую процесс регистрации нового специалиста в системе
 class SpecialistRegistrationViewController: UIViewController, UploadModelProtocol {
     
     @IBOutlet weak var loginTextField: UITextField!
@@ -24,30 +25,23 @@ class SpecialistRegistrationViewController: UIViewController, UploadModelProtoco
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         warningLabel.text = ""
-        
-        // MARK: - Testing
-        loginTextField.text = "Specialist Registration"
-        passwordTextField.text = "123456"
-        repeatPasswordTextField.text = "123456"
-        
-//        let uploadModel = UploadModel()
         uploadModel.delegate = self
-
-        // Do any additional setup after loading the view.
+        self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func doneButtonTouched(_ sender: Any) {
-        doneButton.isEnabled = false
-        uploadModel.uploadSpecialistWithId(login: loginTextField.text!, password: passwordTextField.text!)
+        if checkRegistrationInfo() == true {
+            doneButton.isEnabled = false
+            uploadModel.uploadSpecialistWithId(login: loginTextField.text!, password: passwordTextField.text!)
+        }
     }
     
     func itemsUploaded(items: NSArray) {
         doneButton.isEnabled = true
         if let errorCode = items[0] as? Int {
             if errorCode == 11000 {
-                warningLabel.text = "This login is already used"
+                warningLabel.text = "Этот логин уже используется"
                 error = true
             }
         }
@@ -60,6 +54,30 @@ class SpecialistRegistrationViewController: UIViewController, UploadModelProtoco
         if(error == false) {
             print("Segue perform value -> \(specialistId)")
             performSegue(withIdentifier: "regToRegCompleteSegue", sender: self)
+        }
+    }
+    
+    func checkRegistrationInfo() -> Bool {
+        if (loginTextField.text != "" && passwordTextField.text != "" && repeatPasswordTextField.text != "") {
+            if (loginTextField.text!.split(separator: " ").count) > 1 {
+                warningLabel.text = "Пробелы недопустимы в логине"
+                return false
+            } else {
+                if (passwordTextField.text!.count > 5) {
+                    if (passwordTextField.text == repeatPasswordTextField.text) {
+                    return true
+                    } else {
+                        warningLabel.text = "Введенные пароли не совпадают"
+                        return false
+                    }
+                } else {
+                    warningLabel.text = "Пароль должен содержать хотя бы 6 символов"
+                    return false
+                }
+            }
+        } else {
+            warningLabel.text = "Не все необходимые поля заполнены"
+            return false
         }
     }
     

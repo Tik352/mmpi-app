@@ -24,33 +24,25 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     var specialistId: String = String()
     var sex: String = String()
     var resultId: String = String()
-//    var questionItems: NSArray = NSArray()
     var currentQuestion: QuestionsModel = QuestionsModel()
-//    var currentQuestion = QuestionsModel()
     var answers: Array = Array(repeating: 0, count: 566)
     var itemsDownloaded = false
     var sexL: String = String()
     let downloadModel = DownloadModel()
-//    var currentQuestionNumber = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         progressLabel.text = "Вопрос 1/566"
         waringLabel.text = ""
-        
-        // инициализация объекта класса DownloadModel
-//        let downloadModel = DownloadModel()
         downloadModel.delegate = self
         if (sex == "Мужской") {
-//            downloadModel.downloadItems(url: "http://mmpitest.tech/Questions_men.php", mode: "q" ) PHP+SQL ----> MONGO+NODE.js
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/questions/M", mode: "q")
             sexL = "M"
             downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/1", mode: "q")
 
         }
         else {
-//            downloadModel.downloadItems(url: "http://mmpitest.tech/Questions_women.php", mode: "q") PHP+SQL ----> MONGO+NODE.JS
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/questions/W", mode: "q")
             sexL = "W"
             downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/1", mode: "q")
@@ -110,8 +102,6 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
     func nextQuestion() {
         if (currentQuestion.number! < 566) {
             downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/questions/\(sexL)/\(currentQuestion.number! + 1)", mode: "q")
-//            progressLabel.text = "Вопрос \(currentQuestion.number!)/\(questionItems.count)"
-//            currentQuestionLabel.text = currentQuestion.questionText
         }
         else {
             performSegue(withIdentifier: "testToEndSegue", sender: self)
@@ -127,6 +117,5 @@ class mmpiTestingViewController: UIViewController, DownloadModelProtocol {
         destination.specialistId = self.specialistId
         destination.resultId = resultId
     }
-    
 }
 

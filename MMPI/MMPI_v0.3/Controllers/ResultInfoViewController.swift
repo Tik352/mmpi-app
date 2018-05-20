@@ -25,5 +25,4 @@ class ResultInfoViewController: UIViewController {
         nameTextField.text = result.user!.name!
         dateOfBirthTextField.text = result.user!.dateOfBirth!
     }
-    
 }

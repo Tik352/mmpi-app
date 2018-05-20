@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Класс, представляющий собой UIViewController, содержащий в себе информацию о подсчитанной шкале, а также возможные интерпретации результата
 class ScaleDescribtionViewController: UIViewController, DownloadModelProtocol {
     
     @IBOutlet weak var scaleTitleLabel: UILabel!
@@ -21,13 +22,6 @@ class ScaleDescribtionViewController: UIViewController, DownloadModelProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let labelName = view.viewWithTag(1) as! UILabel
-//        let labelValue = view.viewWithTag(2) as! UILabel
-        
-//        labelName.text = scaleName
-//        labelValue.text = String(scaleValue)
-        // Do any additional setup after loading the view.
         downloadModel.delegate = self
 //        downloadModel.downloadItems(url: "http://localhost:3000/api/scalesDescribtion/\(scaleName)", mode: "sd")
         downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/scalesDescribtion/\(scaleName)", mode: "sd")
@@ -50,8 +44,6 @@ class ScaleDescribtionViewController: UIViewController, DownloadModelProtocol {
         }
         else {
             scaleDescribtionTextView.text = "Не удалось загрузить описание"
-        }
-        
+        } 
     }
-
 }

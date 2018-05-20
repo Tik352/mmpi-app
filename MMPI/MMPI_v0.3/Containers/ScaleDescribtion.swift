@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Класс, представляющий собой контейнер для представления описания и интерпретации результата по конкретной шкале
 class ScaleDescribtion: NSObject {
     
     var interpretationName: String?

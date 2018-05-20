@@ -8,28 +8,25 @@
 
 import Foundation
 
+// Протокол, предоставляющий возможности для получения ответа от сервера и синхронизации процессов в клиенте в дальнейшем
 protocol UploadModelProtocol: class {
     func itemsUploaded(items: NSArray)
 }
 
+// Класс, предоставляющий возможности для отправки и обработки ответа POST и PUT запросов к серверу
 class UploadModel: NSObject, URLSessionDelegate {
     
     weak var delegate: UploadModelProtocol!
     
     // Функция, загружающая информацию о новом пользователе
     func uploadUser(name: String, dateOfBirth: String, sex: String, specialistId: String) {
-    
-//        let requestUrl = URL(string: "http://mmpitest.tech/api/addUser.php")!
 //        let requestUrl = URL(string: "http://localhost:3000/api/register/user")!
         let requestUrl = URL(string: "https://mmpi-server.herokuapp.com/api/register/user")!
 
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-    
-//        let postParams = "name=" + name + "&sex=" + sex + "&dateOfBirth=" + dateOfBirth + "&specialistId=" + specialistId
         let postParams = "name=\(name)&sex=\(sex)&dateOfBirth=\(dateOfBirth)&specialistId=\(specialistId)"
-//        let postParams = "name=" + name + "&sex=" + sex + "&date=" + dateOfBirth + "&spid=" + specialistId
         print(postParams)
         request.httpBody = postParams.data(using: String.Encoding.utf8)
     
@@ -157,6 +154,7 @@ class UploadModel: NSObject, URLSessionDelegate {
         
     }
     
+    // Функция, реализующая парсинг ответа от сервера при попытке PUT запроса
     func parseJSONResult(data: Data) {
         var jsonResult = NSDictionary()
         let items = NSMutableArray()
@@ -183,7 +181,6 @@ class UploadModel: NSObject, URLSessionDelegate {
         formatter.dateFormat = "dd.MM.yyyy"
         return formatter.string(from: date)
     }
-    
 }
 
 

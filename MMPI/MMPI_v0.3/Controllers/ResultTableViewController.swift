@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+// Класс, представляющий собой UITableViewController, элементы которого являются своеобразными ссылками на результаты завершенных пользователями тестирования
 class ResultTableViewController: UITableViewController, DownloadModelProtocol {
     
     var specialistId: String = String()
@@ -26,7 +26,6 @@ class ResultTableViewController: UITableViewController, DownloadModelProtocol {
     }
     
     func itemsDownloaded(items: NSArray) {
-//        print(items.count)
         if (items.count != 0) {
             print(items.count)
             results = items as! [Result]
@@ -38,8 +37,6 @@ class ResultTableViewController: UITableViewController, DownloadModelProtocol {
 
     // MARK: - Table view data source
     
-//    var results = [1,2,3,4,5,6,7]
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1

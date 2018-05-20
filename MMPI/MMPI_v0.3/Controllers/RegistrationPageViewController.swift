@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Класс, представляющий собой UIViewController, содержащий в себе интерфейс и логику, реализующую регистрацию клиента в приложении для дальнейшего прохождения им тестирования
 class RegistrationPageViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UploadModelProtocol {
 
     @IBOutlet weak var dateTextField: UITextField!
@@ -144,6 +145,7 @@ class RegistrationPageViewController: UIViewController, UIPickerViewDataSource, 
     
     // Обработка нажатия пользователем кнопки "Готово"
     @IBAction func registrationDoneButtonTouch(_ sender: Any) {
+        warningLabel.text = ""
         // Функция, осуществляющая проверку введенных данных на непустоту
         func registrationInfoCheck(name: String, dateOfBirth: String, sex: String) -> Bool {
             if (name != "") && (dateOfBirth != "") && (sex != ""){
@@ -170,8 +172,5 @@ class RegistrationPageViewController: UIViewController, UIPickerViewDataSource, 
         destination.specialistId = idTextField.text!
         destination.resultId = registeredUserId
         print(registeredUserId)
-        
-//        uploadModel.uploadUser(name: nameTextField.text!, dateOfBirth: dateTextField.text!, sex: sexTextField.text!, specialistId: idTextField.text!)
     }
-
 }

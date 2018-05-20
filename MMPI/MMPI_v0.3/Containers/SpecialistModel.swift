@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Класс, предоставляющий собой контейнер для хранения информации о специалисте
 class Specialist: NSObject {
     var login: String?
     var specialistId: String?

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Класс, представляющий собой UIViewController, содержащий в себе  TextView с инструкциями по прохождению автоматизированного варианта MMPI-тестирования
 class InstructionsViewController: UIViewController {
     
     var sex: String = String()
@@ -32,6 +33,4 @@ class InstructionsViewController: UIViewController {
         destination.specialistId = self.specialistId
         destination.resultId = resultId
     }
-
-
 }

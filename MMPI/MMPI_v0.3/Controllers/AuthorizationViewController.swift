@@ -19,6 +19,7 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
     var downloadModel = DownloadModel()
     
     @IBAction func enterButtonTouchDown(_ sender: Any) {
+        warningLabel.text = ""
         enterButton.isEnabled = false
         func loginInformationCheck(id: String, password: String) -> Bool{
             if (id == "") || (password == "") {
@@ -27,14 +28,11 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
             }
             return true
         }
-        
         let condition = loginInformationCheck(id: idTextField.text!, password: passwordTextField.text!)
         if (condition == true) {
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/login/\(idTextField.text!)/\(passwordTextField.text!)", mode: "l")
             downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/login/\(idTextField.text!)/\(passwordTextField.text!)", mode: "l")
-
         }
-        
     }
     
     func itemsDownloaded(items: NSArray) {
@@ -62,15 +60,4 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
         }
         self.hideKeyboardWhenTappedAround()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

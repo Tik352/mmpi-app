@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Класс, представляющий собой контейнер для хранения информации о конкретном пользователе (клиенте)
 class User: NSObject {
     
     var name: String?
@@ -18,21 +19,17 @@ class User: NSObject {
     override init() {}
      
     init(name: String, sex: String, dateOfBirth: String, specialistId: String) {
-        
         self.name = name
         self.sex = sex
         self.dateOfBirth = dateOfBirth
         self.specialistId = specialistId
     }
-    
     // конструктор для загрузки информации о пользователе без id специалиста
     init(name: String, sex: String, dateOfBirth: String) {
-        
         self.name = name
         self.sex = sex
         self.dateOfBirth = dateOfBirth
     }
-    
     // Функция возращающая описание пользователя
     func userDescription() -> String {
         return "\(name!), \(sex!), \(dateOfBirth!)"

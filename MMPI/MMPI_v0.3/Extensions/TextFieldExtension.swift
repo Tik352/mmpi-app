@@ -7,25 +7,21 @@
 //
 
 // Расширение, предоставляющие доступ к редактированию визуальных границ UITextField
-
 import UIKit
 
 extension UITextField {
-    
     // Радиус скругления границы объека UIView
     @IBInspectable
     var cornerRadius: CGFloat {
         get {return layer.cornerRadius}
         set {layer.cornerRadius = newValue}
     }
-    
     // Толщина границ объекта UIView
     @IBInspectable
     var borderWidth: CGFloat {
         get {return layer.borderWidth}
         set {layer.borderWidth = newValue}
     }
-    
     // Цвет границ объека UIView
     @IBInspectable
     var borderColor: UIColor? {

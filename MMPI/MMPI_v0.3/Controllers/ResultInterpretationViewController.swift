@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Класс, представляющий собой UIViewController, содержащий в себе интерфейс и логику для визуализации информации о пройденном тестировании, включающей в себя в список подсчитанных шкал
 class ResultInterpretationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableItems: UITableView!
@@ -61,5 +62,4 @@ class ResultInterpretationViewController: UIViewController, UITableViewDelegate,
         }
         
     }
-    
 }

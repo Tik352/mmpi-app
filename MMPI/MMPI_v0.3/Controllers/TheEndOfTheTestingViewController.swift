@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Класс, представляющий собой UIViewController, содержащий в себе элементы навигации и логику для отправки подсчитанных результатов на сервер и дальнейшего использования приложения
 class TheEndOfTheTestingViewController: UIViewController, DownloadModelProtocol, UploadModelProtocol {
     
     @IBOutlet weak var nextButton: UIBarButtonItem!
@@ -60,7 +61,6 @@ class TheEndOfTheTestingViewController: UIViewController, DownloadModelProtocol,
         returnToMenuButton.isEnabled = true
         print("yo")
         if (items[0] as? Int != nil) {
-//            let result = Result(user: User(name: name, sex: sex, dateOfBirth: dateOfBirth, specialistId: specialistId), convertedTScales: countedScales, missedQuestionsCount: missedQuestionsCount(), dateOfTesting: gettingCurrentDate(), id: resultId)
             if route == "toMenu" {
                 performSegue(withIdentifier: "theEndToMenuSegue", sender: self)
             } else {
@@ -88,7 +88,6 @@ class TheEndOfTheTestingViewController: UIViewController, DownloadModelProtocol,
         
         let downloadModel = DownloadModel()
         downloadModel.delegate = self
-//        downloadModel.downloadItems(url: "http://mmpitest.tech/Scales.php", mode: "s")
         if(sex == "Мужской") {
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/scales/M", mode: "s")
             downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/scales/M", mode: "s")

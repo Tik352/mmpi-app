@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Класс,  предлагающий пользователю получить результат по уникальному идентификатору завершенного тестирования
 class CheckResultViewController: UIViewController, DownloadModelProtocol {
     
     @IBOutlet weak var resultIdTextField: UITextField!
@@ -16,7 +17,6 @@ class CheckResultViewController: UIViewController, DownloadModelProtocol {
     
     let downloadModel = DownloadModel()
     var result: Result = Result()
-//    var countedScales: [Scale] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +39,12 @@ class CheckResultViewController: UIViewController, DownloadModelProtocol {
     }
     
     @IBAction func doneButtonTouched(_ sender: Any) {
+        warningLabel.text = ""
         if (resultIdTextField.text == "") {
             warningLabel.text = "Необходимо ввести ID"
         } else {
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/results/\(resultIdTextField.text!)", mode: "r")
-            downloadModel.downloadItems(url: "https://lmmpi-server.herokuapp.com/api/results/\(resultIdTextField.text!)", mode: "r")
+            downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/results/\(resultIdTextField.text!)", mode: "r")
         }
     }
     
@@ -52,6 +53,4 @@ class CheckResultViewController: UIViewController, DownloadModelProtocol {
         destination.result = self.result
         destination.countedScales = self.result.convertedTScales!
     }
-
-
 }

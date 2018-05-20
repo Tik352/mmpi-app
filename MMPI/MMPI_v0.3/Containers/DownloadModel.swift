@@ -8,10 +8,12 @@
 
 import Foundation
 
+// Протокол, позволяющий синхронизировать процесс обращения клиента к серверу с внутренними процессами, получать ответ от сервера
 protocol DownloadModelProtocol: class {
     func itemsDownloaded(items: NSArray)
 }
 
+// Класс, представляющий собой модель для выгрузки данных с сервера (реализация GET запросов)
 class DownloadModel: NSObject, URLSessionDataDelegate {
     
     weak var delegate: DownloadModelProtocol!
@@ -27,7 +29,6 @@ class DownloadModel: NSObject, URLSessionDataDelegate {
                 print("error -> \(error!.localizedDescription)")
             }
             else {
-//                print("data downloaded")
                 if (mode == "q") {
                     self.parseJSONQuestions(data: data!)
                     print("data downloaded")
@@ -36,9 +37,6 @@ class DownloadModel: NSObject, URLSessionDataDelegate {
                     self.parseJSONScales(data: data!)
                     print("data downloaded")
                 }
-//                else if (mode == "u") {
-//                    self.parseJSONUsers(data: data!)
-//                }
                 else if (mode == "l") {
                     self.parseJSONSpecialist(data: data!)
                     print("data downloaded")
@@ -216,10 +214,7 @@ class DownloadModel: NSObject, URLSessionDataDelegate {
         catch let error as NSError {
             print("error -> \(error.localizedDescription)")
         }
-//         jsonElement = NSDictionary()
         let questions = NSMutableArray()
-//        for i in 0..<jsonResult.count {
-//            jsonElement = jsonResult as! NSDictionary
             let question = QuestionsModel()
             
             if let number = jsonResult["number"] as? String,
@@ -227,17 +222,16 @@ class DownloadModel: NSObject, URLSessionDataDelegate {
             {
                 question.number = Int(number)
                 question.questionText = questionText
-                // Вывод представления загруженной информации в консоль
                 print(question.itemDescription())
                 
             }
             questions.add(question)
-//        }
         DispatchQueue.main.async(execute: { () -> Void in
             self.delegate.itemsDownloaded(items: questions)
         })
     }
     
+    // Функция, производящая парсинг полученной информации о шкале
     func parseJSONScales(data: Data) {
         var jsonResult = NSArray()
         do {

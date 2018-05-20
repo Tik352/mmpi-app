@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Класс, представляющий контейнер для представления шкалы
+// Класс, представляющий контейнер для представления конкретной шкалы
 class Scale: NSObject {
     
     var name: String?
@@ -18,7 +18,6 @@ class Scale: NSObject {
     var M: Double?
     var Sigma: Double?
     var TScore: Int? // Т-баллы
-//    var correctionScaleValue: Int? // значение шкалы коррекции в сырых баллах
     
     override init() {}
     
@@ -61,6 +60,7 @@ class Scale: NSObject {
         }
     }
     
+    // Функция, переводящая значения шкалы из "сырых" баллов в Т-баллы
     func convertToTScores() {
         TScore = Int(50.0 + 10.0 * (Double(scaleValue!) - M!) / Sigma!)
     }
@@ -80,69 +80,4 @@ class Scale: NSObject {
             scaleValue = scaleValue! + KScaleValue
         }
     }
-    
-    
-    
-//    init(name: String, tQuestionsIndexes: String, fQuestionsIndexes: String, M: Double, M_W: Double, Sigma: Double, Sigma_W: Double) {
-//        super .init()
-//
-//        self.name = name
-//        self.tQuestionsIndexes = tQuestionsIndexes
-//        self.fQuestionsIndexes = fQuestionsIndexes
-//        self.M = M
-//        self.M_W = M_W
-//        self.Sigma = Sigma
-//        self.Sigma_W = Sigma_W
-//    }
-//
-//    
-//
-//    // Фукнция, вычисляющая значение шкалы по индексам "верных" и "неверных" вопросов в Т-баллах
-//    func scaleValueCalculating(answers: [Int], sex: String){
-//
-//        var sum = 0 // в переменной записано подсчитанная сумма "сырых" баллов
-////        var T_result = 0.0 // в переменнай записано значение шкалы, переведенное в Т-баллы
-//        let tArr = tQuestionsIndexes!.split(separator: ","),
-//        fArr = fQuestionsIndexes!.split(separator: ",")
-//        for index in tArr {
-//            // удаляем пробелы перед индексами
-//            let clearIndex = index.trimmingCharacters(in: .whitespaces)
-//            if answers[Int(clearIndex)!] == 1 {
-//                sum += 1
-//            }
-//        }
-//        for index in fArr {
-//            // удаляем пробелы перед индексами
-//            let clearIndex = index.trimmingCharacters(in: .whitespaces)
-//            if answers[Int(clearIndex)!] == -1 {
-//                sum += 1
-//            }
-//        }
-//        scaleValue = sum
-//    }
-//
-//    func convertToTScores(sex: String) {
-//
-//        if sex == "Мужской" {
-//            TScore = Int(50.0 + 10.0 * (Double(scaleValue!) - M!) / Sigma!)
-//        } else {
-//            TScore = Int(50.0 + 10.0 * (Double(scaleValue!) - M_W!) / Sigma_W!)
-//        }
-//    }
-//
-//    // Функция, выполняющая коррекцию шкалы по значению заданной шкале коррекции (KScale)
-//    func correctScale(KScaleValue: Int) {
-//        if name! == "HsScale" {
-//            scaleValue = scaleValue! + Int(Double(KScaleValue) * 0.5)
-//        }
-//        else if name! == "PdScale" {
-//            scaleValue = scaleValue! + Int(Double(KScaleValue) * 0.4)
-//        }
-//        else if name! == "MaScale" {
-//            scaleValue = scaleValue! + Int(Double(KScaleValue) * 0.2)
-//        }
-//        else {
-//            scaleValue = scaleValue! + KScaleValue
-//        }
-//    }
 }

@@ -246,7 +246,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lue-5d-SKT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lue-5d-SKT">
                                 <rect key="frame" x="16" y="240" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                 <color key="textColor" red="0.97421175241470337" green="0.2153765857219696" blue="0.046381928026676178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -263,6 +263,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="a2D-1d-v2C" firstAttribute="trailing" secondItem="Lue-5d-SKT" secondAttribute="trailing" constant="16" id="07C-z2-kKN"/>
                             <constraint firstItem="zK8-EE-Tdo" firstAttribute="leading" secondItem="XDu-OJ-kFZ" secondAttribute="leading" id="7IB-up-QNQ"/>
                             <constraint firstItem="c00-LN-GOs" firstAttribute="leading" secondItem="zK8-EE-Tdo" secondAttribute="leading" id="9wt-05-Nco"/>
                             <constraint firstItem="XDu-OJ-kFZ" firstAttribute="leading" secondItem="C7V-zs-YU8" secondAttribute="leading" id="CAh-LQ-YYu"/>
@@ -276,7 +277,6 @@
                             <constraint firstItem="a2D-1d-v2C" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zK8-EE-Tdo" secondAttribute="trailing" constant="262" id="hiG-rh-aLe"/>
                             <constraint firstItem="C7V-zs-YU8" firstAttribute="leading" secondItem="a2D-1d-v2C" secondAttribute="leading" constant="16" id="hy1-8g-UTw"/>
                             <constraint firstItem="C7V-zs-YU8" firstAttribute="top" secondItem="a2D-1d-v2C" secondAttribute="top" constant="23" id="iZi-a1-XaJ"/>
-                            <constraint firstItem="a2D-1d-v2C" firstAttribute="trailing" secondItem="Lue-5d-SKT" secondAttribute="trailing" constant="16" id="mSb-LC-mdb"/>
                             <constraint firstItem="zK8-EE-Tdo" firstAttribute="top" secondItem="XDu-OJ-kFZ" secondAttribute="bottom" constant="16" id="rq4-sk-Thi"/>
                             <constraint firstItem="a2D-1d-v2C" firstAttribute="trailing" secondItem="c00-LN-GOs" secondAttribute="trailing" constant="152" id="sKD-1h-BL3"/>
                             <constraint firstItem="XDu-OJ-kFZ" firstAttribute="top" secondItem="C7V-zs-YU8" secondAttribute="bottom" constant="8" id="vlT-WL-3s2"/>
@@ -302,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2c-JT-gkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="-856"/>
+            <point key="canvasLocation" x="1398.75" y="-856.69014084507046"/>
         </scene>
         <!--Регистрация-->
         <scene sceneID="JI6-Gf-enw">
@@ -348,8 +348,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZH-FD-YQ2">
-                                <rect key="frame" x="16" y="264" width="96" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZH-FD-YQ2">
+                                <rect key="frame" x="16" y="264" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                 <color key="textColor" red="0.97421175241470337" green="0.2153765857219696" blue="0.046381928026676178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -366,17 +366,17 @@
                             <constraint firstItem="AVP-XX-D1T" firstAttribute="leading" secondItem="uaL-RU-zCP" secondAttribute="leading" id="HII-Th-g9L"/>
                             <constraint firstItem="AVP-XX-D1T" firstAttribute="top" secondItem="uaL-RU-zCP" secondAttribute="bottom" constant="8" id="IMb-Gg-rLx"/>
                             <constraint firstItem="1KR-6q-BpV" firstAttribute="leading" secondItem="vjJ-03-VZh" secondAttribute="leading" id="Knu-Dh-LMh"/>
+                            <constraint firstItem="mZH-FD-YQ2" firstAttribute="leading" secondItem="xak-Js-MPK" secondAttribute="leading" constant="16" id="Lz8-lj-afs"/>
                             <constraint firstItem="mZH-FD-YQ2" firstAttribute="top" secondItem="1KR-6q-BpV" secondAttribute="bottom" constant="16" id="S5P-1W-2Yq"/>
                             <constraint firstItem="xak-Js-MPK" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="uaL-RU-zCP" secondAttribute="trailing" constant="261" id="TL0-t4-PMY"/>
                             <constraint firstItem="vjJ-03-VZh" firstAttribute="top" secondItem="KXn-Oc-p9y" secondAttribute="bottom" constant="16" id="Vk8-Ek-p45"/>
+                            <constraint firstItem="xak-Js-MPK" firstAttribute="trailing" secondItem="mZH-FD-YQ2" secondAttribute="trailing" constant="16" id="ZNP-ML-bcb"/>
                             <constraint firstItem="kPQ-Ss-Hls" firstAttribute="top" secondItem="AVP-XX-D1T" secondAttribute="bottom" constant="16" id="b3q-fm-dEJ"/>
                             <constraint firstItem="xak-Js-MPK" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="KXn-Oc-p9y" secondAttribute="trailing" constant="99" id="fgQ-uV-plz"/>
                             <constraint firstItem="vjJ-03-VZh" firstAttribute="leading" secondItem="KXn-Oc-p9y" secondAttribute="leading" id="gW1-gP-6E7"/>
                             <constraint firstItem="KXn-Oc-p9y" firstAttribute="top" secondItem="kPQ-Ss-Hls" secondAttribute="bottom" constant="8" id="gkC-YX-Dbr"/>
-                            <constraint firstItem="mZH-FD-YQ2" firstAttribute="leading" secondItem="1KR-6q-BpV" secondAttribute="leading" id="gvU-uC-JnH"/>
                             <constraint firstItem="KXn-Oc-p9y" firstAttribute="leading" secondItem="kPQ-Ss-Hls" secondAttribute="leading" id="hds-56-VHS"/>
                             <constraint firstItem="xak-Js-MPK" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kPQ-Ss-Hls" secondAttribute="trailing" constant="261" id="i8x-Yy-C90"/>
-                            <constraint firstItem="xak-Js-MPK" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="mZH-FD-YQ2" secondAttribute="trailing" constant="208" id="ibu-O7-V9G"/>
                             <constraint firstItem="xak-Js-MPK" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="1KR-6q-BpV" secondAttribute="trailing" constant="99" id="jKK-0R-nyd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xak-Js-MPK"/>
@@ -400,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duT-Er-TE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2126" y="-1820"/>
+            <point key="canvasLocation" x="2124.375" y="-1820.0704225352113"/>
         </scene>
         <!--Результаты-->
         <scene sceneID="zUs-KN-kju">
@@ -1349,7 +1349,8 @@
         <image name="Specialist" width="274" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1pw-Gr-V5P"/>
+        <segue reference="9Rf-82-CVc"/>
+        <segue reference="RV3-6Y-jbV"/>
         <segue reference="q14-q9-J1c"/>
         <segue reference="NYI-MC-6Ll"/>
     </inferredMetricsTieBreakers>
