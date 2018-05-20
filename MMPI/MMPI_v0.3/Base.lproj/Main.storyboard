@@ -1253,6 +1253,7 @@
                         <outlet property="dateOfBirthTextField" destination="p2y-EH-6zD" id="6ef-6Y-IN5"/>
                         <outlet property="dateOfTestingTextField" destination="JpW-Ui-3sV" id="Gzj-NM-L3i"/>
                         <outlet property="idTextField" destination="1Xq-2U-VCq" id="TOd-Mf-oIS"/>
+                        <outlet property="missedQuestionsTextField" destination="7VJ-V3-8qv" id="dwl-zU-Aiv"/>
                         <outlet property="nameTextField" destination="8sI-1G-57m" id="WfL-9g-tXs"/>
                     </connections>
                 </viewController>

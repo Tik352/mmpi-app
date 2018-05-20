@@ -16,6 +16,7 @@ class ResultInfoViewController: UIViewController {
     @IBOutlet weak var dateOfTestingTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var dateOfBirthTextField: UITextField!
+    @IBOutlet weak var missedQuestionsTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,5 +25,6 @@ class ResultInfoViewController: UIViewController {
         dateOfTestingTextField.text = result.dateOfTesting!
         nameTextField.text = result.user!.name!
         dateOfBirthTextField.text = result.user!.dateOfBirth!
+        missedQuestionsTextField.text = String( result.missedQuestionsCount!)
     }
 }
