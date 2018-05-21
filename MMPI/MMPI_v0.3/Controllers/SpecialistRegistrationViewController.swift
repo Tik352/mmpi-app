@@ -57,6 +57,7 @@ class SpecialistRegistrationViewController: UIViewController, UploadModelProtoco
         }
     }
     
+    // Функция, проверяющую информацию, введенную пользователем при регистрации 
     func checkRegistrationInfo() -> Bool {
         if (loginTextField.text != "" && passwordTextField.text != "" && repeatPasswordTextField.text != "") {
             if (loginTextField.text!.split(separator: " ").count) > 1 {
@@ -64,10 +65,16 @@ class SpecialistRegistrationViewController: UIViewController, UploadModelProtoco
                 return false
             } else {
                 if (passwordTextField.text!.count > 5) {
-                    if (passwordTextField.text == repeatPasswordTextField.text) {
-                    return true
+                    if passwordTextField.text!.latinCharactersAndNumbersOnly == true && loginTextField.text!.latinCharactersAndNumbersOnly == true {
+                        if (passwordTextField.text == repeatPasswordTextField.text) {
+                        return true
+                        } else {
+                            warningLabel.text = "Введенные пароли не совпадают"
+                            return false
+                        }
                     } else {
-                        warningLabel.text = "Введенные пароли не совпадают"
+                        warningLabel.text = "Логин и пароль могут содержать только латинские буквы, цифры и знаки подчеркивания"
+
                         return false
                     }
                 } else {
@@ -85,5 +92,11 @@ class SpecialistRegistrationViewController: UIViewController, UploadModelProtoco
         let destination = segue.destination as! RegistrationCompleteViewController
         print("Segue prepare value -> \(specialistId)")
         destination.specialistId = self.specialistId
+    }
+}
+
+extension String {
+    var latinCharactersAndNumbersOnly: Bool {
+        return self.range(of: "[^0-9a-zA-Z_]", options: .regularExpression) == nil
     }
 }

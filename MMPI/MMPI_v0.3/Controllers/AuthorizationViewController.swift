@@ -25,13 +25,21 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
             if (id == "") || (password == "") {
                 warningLabel.text = "Не вся необходимая информация введена пользователем"
                 return false
+            } else {
+                if URL(string: "https://mmpi-server.herokuapp.com/api/login/\(idTextField.text!)/\(passwordTextField.text!)") != nil {
+                    return true
+                } else {
+                    warningLabel.text = "Недопустимые символы в поле логин или пароль"
+                    return false
+                }
             }
-            return true
         }
         let condition = loginInformationCheck(id: idTextField.text!, password: passwordTextField.text!)
         if (condition == true) {
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/login/\(idTextField.text!)/\(passwordTextField.text!)", mode: "l")
             downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/login/\(idTextField.text!)/\(passwordTextField.text!)", mode: "l")
+        } else {
+            enterButton.isEnabled = true
         }
     }
     
@@ -51,6 +59,7 @@ class AuthorizationViewController: UIViewController, DownloadModelProtocol {
         downloadModel.delegate = self
         
         warningLabel.text = ""
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -42,9 +42,11 @@ class CheckResultViewController: UIViewController, DownloadModelProtocol {
         warningLabel.text = ""
         if (resultIdTextField.text == "") {
             warningLabel.text = "Необходимо ввести ID"
-        } else {
+        } else if (URL(string: "https://mmpi-server.herokuapp.com/api/results/\(resultIdTextField.text!)")) != nil {
 //            downloadModel.downloadItems(url: "http://localhost:3000/api/results/\(resultIdTextField.text!)", mode: "r")
             downloadModel.downloadItems(url: "https://mmpi-server.herokuapp.com/api/results/\(resultIdTextField.text!)", mode: "r")
+        } else {
+            warningLabel.text = "Недопустимые символы в идентификаторе"
         }
     }
     
